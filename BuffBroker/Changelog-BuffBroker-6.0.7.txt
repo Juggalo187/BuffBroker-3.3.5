@@ -1,0 +1,82 @@
+------------------------------------------------------------------------
+r357 | neaves | 2015-01-08 10:30:32 +0000 (Thu, 08 Jan 2015) | 1 line
+Changed paths:
+   A /tags/6.0.7 (from /trunk:356)
+
+Tagging as 6.0.7
+------------------------------------------------------------------------
+r356 | neaves | 2015-01-08 10:30:03 +0000 (Thu, 08 Jan 2015) | 1 line
+Changed paths:
+   M /trunk/PlayerState.lua
+
+nil string fix: removed group parsing when in a group of 1 (aka custom group finder)
+------------------------------------------------------------------------
+r354 | neaves | 2014-12-31 10:16:45 +0000 (Wed, 31 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/PlayerState.lua
+
+corrected lua error: role lost when changing to/from a tank form/spell (blood presence, bear form, etc)
+------------------------------------------------------------------------
+r353 | neaves | 2014-12-31 06:20:05 +0000 (Wed, 31 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.lua
+   M /trunk/PlayerState.lua
+
+reverting lost code from failed deploy (copied old to working copy); safe-cast string for no-name error case in PlayerState
+------------------------------------------------------------------------
+r352 | neaves | 2014-12-30 20:46:35 +0000 (Tue, 30 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.lua
+
+Moved form check inside loop where relevant variables are populated (derp)
+------------------------------------------------------------------------
+r350 | neaves | 2014-12-30 10:38:59 +0000 (Tue, 30 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/Constants.lua
+   M /trunk/PlayerState.lua
+
+Filled in Draenor-friendly role detection, spell eligibility, and buff preferences.  multi-benefit spells are still a bit off (Arcane Intellect, Legacy of the White Tiger).
+------------------------------------------------------------------------
+r349 | neaves | 2014-12-23 23:59:43 +0000 (Tue, 23 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.lua
+
+didn't save buffbroker.lua
+------------------------------------------------------------------------
+r348 | neaves | 2014-12-23 23:59:00 +0000 (Tue, 23 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.lua
+   M /trunk/Constants.lua
+   M /trunk/PlayerState.lua
+
+Identified old class/spell mappings in BBPlayerState.cataclysm:ProfileUnit;  broke out spec-to-spell lookup into Constants.  broke out role assignment & known spells as new function in player state.  BBPlayerState.base:SetRole MUST be completed before addon will function for all classes.
+------------------------------------------------------------------------
+r346 | neaves | 2014-12-22 17:44:26 +0000 (Mon, 22 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.lua
+   M /trunk/Constants.lua
+
+removed GetTalentInfo, no longer useful for Warlords of Draenor (fixes lua error for druids, death knights, and others); added planning comments for role detection (tank/healer/dps)
+------------------------------------------------------------------------
+r344 | neaves | 2014-12-19 22:37:52 +0000 (Fri, 19 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.lua
+   M /trunk/Constants.lua
+
+disabled paladin seals, until FORM data is linked up everywhere against the relevant spells, active-checks, etc
+------------------------------------------------------------------------
+r342 | neaves | 2014-12-19 21:03:53 +0000 (Fri, 19 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.lua
+   M /trunk/Constants.lua
+   M /trunk/PlayerState.lua
+
+Fixed some lua syntax bugs; fixed compliance with new UnitGUID format; fixed compliance with changes to range & membership check on the player;  Seals broken, until Form checks can be added (GetShapeshiftForm)
+------------------------------------------------------------------------
+r339 | neaves | 2014-12-19 17:23:24 +0000 (Fri, 19 Dec 2014) | 1 line
+Changed paths:
+   M /trunk/BuffBroker.toc
+   M /trunk/Constants.lua
+
+updated lookup tables in Constants.lua, to match warlords of draenor spell categories and spellids
+------------------------------------------------------------------------
