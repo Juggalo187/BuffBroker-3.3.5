@@ -685,6 +685,23 @@ BuffList.BuffPriorities = {
 		["ARMOR"] = 1,
 		["SHADOW_RESIST"] = 0
 	},
+	 ["PALADIN_TANK"] = {
+        ["PALADIN_SEAL"] = 12,      -- Higher priority for seals
+        ["MP5"] = 11,               -- Mana regeneration is important for paladin tanks
+        ["TANK"] = 10,              -- Blessing of Sanctuary
+        ["STATS"] = 9,              -- Blessing of Kings
+        ["STAMINA"] = 8,            -- Fortitude
+        ["HP"] = 7,                 -- Commanding Shout
+        ["WILD"] = 6,               -- Mark of the Wild
+        ["INTELLECT"] = 5,          -- Intellect for more mana
+        ["SPIRIT"] = 4,             -- Spirit for mana regen
+        ["AP"] = 3,                 -- Attack Power
+        ["THORNS"] = 2,             -- Thorns
+        ["STRENGTH_AGILITY"] = 1,   -- Strength/Agility
+        ["MELEE_HASTE"] = 0,
+        ["ARMOR"] = -1,
+        ["SHADOW_RESIST"] = -2
+    },
 	[BuffBroker.Constants.Roles.PureMelee] = {
 		["AP"] = 7,
 		["STATS"] = 6,
@@ -1586,7 +1603,15 @@ function BuffBroker:BuildSuggestList(thePlayers, theClasses, theCoverage, bestBu
 						-- Come up with a suggestion for this player (nil == can't do anything target would want)
 
 						-- Get the prioritized list of buffs this player/target wants (based on their role)
-						if currentProfile.Role then buffPriorities = BuffList.BuffPriorities[currentProfile.Role] end
+						if currentProfile.Role then 
+							-- Special case: Paladin tanks get different priorities
+							if currentProfile.Role == BuffBroker.Constants.Roles.Tank and 
+							currentProfile.Class == BuffBroker.Constants.Classes.Paladin then
+								buffPriorities = BuffList.BuffPriorities["PALADIN_TANK"]
+							else
+								buffPriorities = BuffList.BuffPriorities[currentProfile.Role] 
+							end
+						end
 						
 						-- if: this player actually WANTS this type of buff, and can HAVE this buff
 						MyDebugPrint("character level: %d, Min level of %s: %d", currentProfile.Level, spellName, currentSlotEntry.MinLevel)
